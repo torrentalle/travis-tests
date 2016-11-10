@@ -1,2 +1,2 @@
 # travis-tests
-Sme tests with travis
+Some tests with travis
