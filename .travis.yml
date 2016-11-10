@@ -1,0 +1,9 @@
+sudo: required
+
+language: c
+
+script:
+ - pwd
+ - export FILES=`find ./`
+ - echo $FILES
+ 
