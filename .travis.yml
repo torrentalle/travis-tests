@@ -1,9 +1,6 @@
 sudo: false
 
-language: c
-
 script:
  - pwd
- - export FILES=`find ./`
- - echo $FILES
+ - echo "$TEST_VAR"
  
