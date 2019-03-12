@@ -4,6 +4,6 @@ language: node_js
 node_js: "10"
 script:
  - pwd
- - find /
- - npm install -g vsce
+ - export CURDIR=$(pwd)
+ - echo $CURDIR
  
