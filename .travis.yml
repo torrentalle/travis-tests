@@ -1,7 +1,9 @@
 sudo: false
 os: windows
 language: nodejs
+node_js: "10"
 script:
  - pwd
- - echo "$TEST_VAR"
+ - find /
+ - npm install -g vsce
  
