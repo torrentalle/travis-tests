@@ -1,6 +1,6 @@
 sudo: false
 os: linux
-#language: shell
+language: shell
 #node_js: "10"
 
 before_script:
@@ -12,10 +12,7 @@ script:
 deploy:
   provider: releases
   api_key: $GITHUB_TOKEN
-  overwrite: true
   skip_cleanup: true
   prerelease: false
-  file:
-    - .travis.yml
   on:
     tags: true
