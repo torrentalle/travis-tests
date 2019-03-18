@@ -15,5 +15,7 @@ deploy:
   overwrite: true
   skip_cleanup: true
   prerelease: false
+  file:
+    - .travis.yml
   on:
     tags: true
