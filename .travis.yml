@@ -9,7 +9,7 @@ install:
   - echo npm install
 script:
   - echo npm run build
-  - xvfb-run npm test --silent
+  - $(wich xvfb-run) echo npm test --silent
 
 jobs:
   include:
