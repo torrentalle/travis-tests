@@ -9,6 +9,10 @@ os:
   - osx
 script:
  - echo "script"
+before_deploy: "echo before deploy"
+deploy:
+  provider: script
+  script: echo deploy
 
 jobs:
   include:
