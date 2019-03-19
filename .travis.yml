@@ -18,6 +18,7 @@ deploy:
   skip_cleanup: true
   file: ".travis.yml"
   draft: false
+  overwrite: true
   
 after_success:
   - echo "after"
