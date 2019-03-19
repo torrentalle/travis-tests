@@ -1,11 +1,9 @@
 language: node_js
 node_js: 10
-matrix:
-  include:
-    - os: linux
-      env: X=xfb-run
-    - os: windows
-    - os: osx
+os:
+  - linux 
+  - windows
+  - osx
 
 #before_script:
 # - [ "$TRAVIS_OS_NAME" != "linux" ] || X=xfb-run
