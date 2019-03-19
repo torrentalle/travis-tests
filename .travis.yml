@@ -10,8 +10,12 @@ os:
   - linux
   - windows
   - osx
+before_script:
+  - echo $TRAVIS_TAG
 script:
  - echo "script"
+
+
 before_deploy: "echo before deploy"
 deploy:
   provider: script
