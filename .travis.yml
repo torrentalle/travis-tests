@@ -3,13 +3,13 @@ node_js: 10
 
 matrix:
   include:
-  - name: Linux
-    env: TEST_SUITE=integration
-  - name: "3.5 Integration Tests"
-    env: TEST_SUITE=installation
+    - name: Linux
+      env: TEST_SUITE=integration
+    - name: "3.5 Integration Tests"
+      env: TEST_SUITE=installation
 
 before_install:
- - [ "$TRAVIS_OS_NAME" != "linux" ] || X=xfb-run
+  - [ "$TRAVIS_OS_NAME" != "linux" ] || X=xfb-run
 before_script:
   - echo npm run build
 script:
