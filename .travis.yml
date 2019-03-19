@@ -1,13 +1,19 @@
 language: node_js
 node_js: 10
-os:
-  - linux
-  - windows
-  - osx
+matrix:
+  include:
+    - os: linux
+      env:
+        - X=xfb-run
+    - os: windows
+    - os: osx
 
+name: $TRAVIS_OS_NAME
+#before_script:
+# - [ "$TRAVIS_OS_NAME" != "linux" ] || X=xfb-run
 script:
   - echo npm run build
-  - $(which xvfb-run) echo npm test --silent
+  - $X echo npm test --silent
 
 jobs:
   include:
