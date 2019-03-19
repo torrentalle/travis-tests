@@ -4,15 +4,20 @@ language: shell
 #node_js: "10"
 
 before_script:
- - export TRAVIS_TAG=v0.0.1
+ - export TRAVIS_TAG=v0.0.2
 
 script:
  - echo hola
- 
+after_script:
+  - echo "after script" 
+before_deploy:
+  - echo "before deploy" 
 deploy:
   provider: releases
   api_key: $GITHUB_TOKEN
   skip_cleanup: true
-  prerelease: false
-  on:
-    tags: true
+  file: ".travis.yml"
+  draft:true
+  
+after_success:
+  - echo "after"
