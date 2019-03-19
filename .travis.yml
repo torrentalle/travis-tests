@@ -17,7 +17,7 @@ deploy:
   api_key: $GITHUB_TOKEN
   skip_cleanup: true
   file: ".travis.yml"
-  draft: false
+  draft: true
   overwrite: true
   
 after_success:
