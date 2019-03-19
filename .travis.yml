@@ -3,6 +3,9 @@ dist: xenial
 cache: npm
 language: node_js
 node_js: 10
+env:
+  global:
+    - TRAVIS_TAG=${TRAVIS_TAG:-$TRAVIS_BRANCH}
 os:
   - linux
   - windows
