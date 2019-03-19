@@ -4,7 +4,7 @@ matrix:
     - name: Linux
       env: TEST_SUITE=integration
     - name: "3.5 Integration Tests"
-      env: TEST_SUITE=installation TRAVIS_OS_NAME=osx
+      env: TEST_SUITE=installation
 script:
   - echo npm test
 
