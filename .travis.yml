@@ -1,28 +1,11 @@
 language: node_js
 node_js: 10
-
 matrix:
   include:
     - name: Linux
       env: TEST_SUITE=integration
     - name: "3.5 Integration Tests"
       env: TEST_SUITE=installation
-
-before_install:
-  - [ "$TRAVIS_OS_NAME" != "linux" ] || X=xfb-run
-before_script:
-  - echo npm run build
 script:
-  - $X echo npm test
+  - echo npm test
 
-jobs:
-  include:
-    - stage: test-deploy
-      os: linux
-      name: "Test job"
-      before_script:
-        - echo npm run test:production
-      deploy:
-        provider: script
-        script: echo test-deploy $TRAVIS_TAG
-        skip_cleanup: true
