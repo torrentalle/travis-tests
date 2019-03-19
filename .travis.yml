@@ -9,15 +9,12 @@ matrix:
 script:
   - echo npm test
 
-jobs:
-  include:
-    - stage: test-deploy
-      os: linux
-      name: "Test job"
-      script:
-        - export TRAVIS_TAG=${TRAVIS_TAG:-$TRAVIS_BRANCH}
-      deploy:
-        provider: script
-        script: echo test-deploy $TRAVIS_TAG
-        skip_cleanup: true
+deploy:
+  provider: script
+  script: echo test-deploy $TRAVIS_TAG
+  skip_cleanup: true
+  on:
+    branch: master
+    condition: $TEST_SUITE = installation
+ 
    
