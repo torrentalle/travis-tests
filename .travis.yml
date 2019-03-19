@@ -5,8 +5,6 @@ os:
   - windows
   - osx
 
-install:
-  - echo npm install
 script:
   - echo npm run build
   - $(which xvfb-run) echo npm test --silent
