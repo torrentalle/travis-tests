@@ -1,28 +1,24 @@
-sudo: false
-dist: xenial
-cache: npm
 language: node_js
 node_js: 10
-env:
-  global:
-    - TRAVIS_TAG=${TRAVIS_TAG:-$TRAVIS_BRANCH}
 os:
   - linux
   - windows
   - osx
-before_script:
-  - echo $TRAVIS_TAG
+
+install:
+  - echo npm install
 script:
- - echo "script"
-
-
-before_deploy: "echo before deploy"
-deploy:
-  provider: script
-  script: echo deploy
+  - echo npm run build
+  - xvfb-run npm test --silent
 
 jobs:
   include:
-    - stage: test-job
+    - stage: test-deploy
       os: linux
       name: "Test job"
+      script:
+        - export TRAVIS_TAG=${TRAVIS_TAG:-$TRAVIS_BRANCH}
+      deploy:
+        provider: script
+        script: echo test-deploy $TRAVIS_TAG
+        skip_cleanup: true
