@@ -1,23 +1,27 @@
 language: node_js
 node_js: 10
-os:
-  - linux 
-  - windows
-  - osx
 
-before_script:
+matrix:
+  include:
+  - name: Linux
+    env: TEST_SUITE=integration
+  - name: "3.5 Integration Tests"
+    env: TEST_SUITE=installation
+
+before_install:
  - [ "$TRAVIS_OS_NAME" != "linux" ] || X=xfb-run
-script:
+before_script:
   - echo npm run build
-  - $X echo npm test --silent
+script:
+  - $X echo npm test
 
 jobs:
   include:
     - stage: test-deploy
       os: linux
       name: "Test job"
-      script:
-        - export TRAVIS_TAG=${TRAVIS_TAG:-$TRAVIS_BRANCH}
+      before_script:
+        - echo npm run test:production
       deploy:
         provider: script
         script: echo test-deploy $TRAVIS_TAG
