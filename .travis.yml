@@ -8,4 +8,10 @@ os:
   - windows
   - osx
 script:
- - npm install
+ - echo "script"
+
+jobs:
+  include:
+    - stage: test-job
+      os: linux
+      name: "Test job"
