@@ -4,7 +4,7 @@ os:
   - linux 
   - windows
   - osx
-name: "Platorm: ${TRAVIS_OS_NAME}" 
+name: "Platform: $TRAVIS_OS_NAME" 
 before_script:
  - [ "$TRAVIS_OS_NAME" != "linux" ] || X=xfb-run
 script:
