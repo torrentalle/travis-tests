@@ -2,16 +2,13 @@ language: shell
 
 install:
   - echo npm install
-before_script:
-  - echo npm run build
-script:
-  - echo xvfb-run npm ${TEST_TARGET:-test} --silent
 
 jobs:
   include:
+    - name: Integration tests
+      before_script: echo npm run build
+      script: echo xvfb-run npm run ${TEST_TARGET:-test}
     - name: Package install tests
-      before_script:
-        - echo npm run package
-      env:
-        - TEST_TARGET=test:package
+      before_script: echo npm run package
+      script: echo xvfb-run npm run  test:package
        
