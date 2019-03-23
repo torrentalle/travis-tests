@@ -1,9 +1,5 @@
 language: shell
 
-env:
-  global:
-    - EXTENSION=perl-moose
-
 install:
   - echo npm install
 before_script:
