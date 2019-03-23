@@ -6,9 +6,27 @@ install:
 jobs:
   include:
     - name: Integration tests
-      before_script: echo npm run build
-      script: echo xvfb-run npm run ${TEST_TARGET:-test}
-    - name: Package install tests
-      before_script: echo npm run package
-      script: echo xvfb-run npm run  test:package
-       
+      script:
+        - echo npm run build
+        - echo xvfb-run npm run test
+    - srage: test-package
+      name: Package install tests
+      script:
+        - echo npm run package
+        - echo xvfb-run npm run test:package
+      before_deploy:
+        - echo 'export FILE=perl-moose-$(npm run version--silent).vsix'
+      deploy:
+        - provider: script
+          script: echo test-deploy master-prerelease
+          skip_cleanup: true
+          on:
+            branch: master
+            tags: false
+        - provider: script
+          script: echo test-deploy $TRAVIS_TAG
+          skip_cleanup: true
+          on:
+            branch: master
+            tags: true
+
