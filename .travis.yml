@@ -13,7 +13,7 @@ script:
 
 jobs:
   include:
-    - stage: test
+    - name: Package install tests
       before_script:
         - echo npm run package
       env:
