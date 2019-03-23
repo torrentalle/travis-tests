@@ -1,19 +1,21 @@
 language: shell
-matrix:
-  include:
-    - name: Linux
-      env: TEST_SUITE=integration
-    - name: "3.5 Integration Tests"
-      env: TEST_SUITE=installation
-script:
-  - echo npm test
 
-deploy:
-  provider: script
-  script: echo test-deploy $TRAVIS_TAG
-  skip_cleanup: true
-  on:
-    branch: master
-    condition: $TEST_SUITE = installation
- 
-   
+env:
+  global:
+    - EXTENSION=perl-moose
+
+install:
+  - echo npm install
+before_script:
+  - echo npm run build
+script:
+  - echo xvfb-run npm ${TEST_TARGET:-test} --silent
+
+jobs:
+  include:
+    - stage: test
+      before_script:
+        - echo npm run package
+      env:
+        - TEST_TARGET=test:package
+       
